@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Rick And Morty App</string>
+    <string name="app_name">Rick And Morty Test Code</string>
     <string name="item_gender_tools_text">Genero: </string>
     <string name="item_last_location_tools_text">Última ubicación conocida:</string>
     <string name="item_first_seen_tools_text">Primera vez visto en:</string>
