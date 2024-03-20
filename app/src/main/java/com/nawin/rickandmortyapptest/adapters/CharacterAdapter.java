@@ -11,6 +11,7 @@ import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 import com.nawin.rickandmortyapptest.R;
 import com.nawin.rickandmortyapptest.models.Character;
@@ -51,6 +52,16 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
         Character character = objects.get(position);
 
         holder.lbName.setText(character.getName());
+
+        // Setear el estado y el color del texto
+        holder.tvAlive.setText(character.getStatus());
+        if (character.getStatus().equalsIgnoreCase("alive")) {
+            holder.tvAlive.setTextColor(ContextCompat.getColor(context, R.color.alive));
+        } else if (character.getStatus().equalsIgnoreCase("dead")){
+            holder.tvAlive.setTextColor(ContextCompat.getColor(context, R.color.dead));
+        }else {
+            holder.tvAlive.setTextColor(ContextCompat.getColor(context, R.color.unknown));
+        }
         Picasso.get()
                 .load(character.getImage())
                 .placeholder(R.drawable.ic_launcher_background)
@@ -79,11 +90,14 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
 
         ImageView imgCharacter;
         TextView lbName;
+
+        TextView tvAlive;
         public CharacterVH(@NonNull View itemView) {
             super(itemView);
 
             imgCharacter = itemView.findViewById(R.id.imgCharacterCard);
             lbName = itemView.findViewById(R.id.lbNameCharacterCard);
+            tvAlive = itemView.findViewById(R.id.tvAlive);
         }
     }
 

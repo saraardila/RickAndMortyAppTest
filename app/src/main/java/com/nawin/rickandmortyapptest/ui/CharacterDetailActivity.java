@@ -36,6 +36,10 @@ public class CharacterDetailActivity extends AppCompatActivity {
         TextView nameTextView = findViewById(R.id.nameTextView);
         TextView especieTextView = findViewById(R.id.speciesTextView);
         TextView generoTextView = findViewById(R.id.maleTextView);
+        TextView statusTextView = findViewById(R.id.statusTextView);
+        TextView tipoTextView = findViewById(R.id.typeRickTextView);
+        TextView placeTextView = findViewById(R.id.locationTextView);
+        TextView fisrtTextView = findViewById(R.id.originTextView);
 
         //Coger el ID que pasamos en el adapter
         if(getIntent().getExtras() != null){
@@ -54,6 +58,17 @@ public class CharacterDetailActivity extends AppCompatActivity {
                         nameTextView.setText(c.getName());
                         especieTextView.setText(c.getSpecies());
                         generoTextView.setText(c.getGender());
+                        statusTextView.setText(c.getStatus());
+                        placeTextView.setText(c.getLocation().getName());
+                        fisrtTextView.setText(c.getOrigin().getName());
+
+                        String type = c.getType();
+                        if (type != null && !type.isEmpty()) {
+                            tipoTextView.setText(type);
+                        } else {
+                            tipoTextView.setText("Tipo desconocido");
+                        }
+
 
                         // Cargar la imagen del personaje utilizando Picasso
                         Picasso.get()

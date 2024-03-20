@@ -27,6 +27,7 @@
                 android:layout_centerVertical="true"
                 android:layout_centerHorizontal="true"
                 app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/circle"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 android:layout_marginTop="30dp"
@@ -38,6 +39,12 @@
                     app:cardCornerRadius="100dp"
                     android:layout_centerHorizontal="true"
                     android:layout_centerVertical="true">
+                    <ImageView
+                        android:id="@+id/rounded_image"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="centerCrop"
+                        tools:src="@tools:sample/avatars" />
 
                     <ImageView
                         android:id="@+id/imgFotoVerCharacter"
@@ -57,8 +64,8 @@
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginEnd="16dp"
-                android:text="@{viewModel.selectedItem.name}"
-                android:textColor="@color/backgroundApp"
+                android:text="SARA"
+                android:textColor="@color/primaryDarkColor"
                 android:textAlignment="center"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -205,26 +212,12 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
-                android:text=""
+                android:text="@{viewModel.selectedItem.type}"
                 style="@style/StatusAndSpeciesItem"
                 tools:text="@string/item_rick_type_tools_text"
                 app:layout_constraintBottom_toBottomOf="@+id/typeTextView"
                 app:layout_constraintStart_toEndOf="@+id/typeTextView"
                 app:layout_constraintTop_toTopOf="@+id/typeTextView" />
-
-            <TextView
-                android:id="@+id/numberEpisodeTextView"
-                style="@style/LastLocationItem"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginEnd="16dp"
-                android:text="@string/item_number_episode_tools_text"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/originTextView"
-               />
 
             <TextView
                 android:id="@+id/accountEpisodeTextView"
