@@ -21,7 +21,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 import java.util.List;
 
-public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterVH> implements Filterable {
+public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.CharacterVH> {
     private Context context;
     private List<Character> objects;
 
@@ -100,54 +100,6 @@ public class CharacterAdapter extends RecyclerView.Adapter<CharacterAdapter.Char
             tvAlive = itemView.findViewById(R.id.tvAlive);
         }
     }
-
-    @Override
-    public Filter getFilter() {
-        return characterFilter;
-    }
-    private Filter characterFilter = new Filter() {
-        @Override
-        protected FilterResults performFiltering(CharSequence charSequence) {
-            List<Character> filteredList = new ArrayList<>();
-
-            if (charSequence == null || charSequence.length() == 0) {
-                filteredList.addAll(objects);
-            } else {
-                String filterPattern = charSequence.toString().toLowerCase().trim();
-
-                for (Character character : objects) {
-                    if (character.getName().toLowerCase().contains(filterPattern)) {
-                        filteredList.add(character);
-                    }
-                }
-            }
-
-            FilterResults results = new FilterResults();
-            results.values = filteredList;
-            return results;
-        }
-        @Override
-        protected void publishResults(CharSequence charSequence, FilterResults filterResults) {
-            List<Character> filteredList = (List<Character>) filterResults.values;
-
-            // Si el texto de búsqueda está vacío, mostrar la lista original
-            if (charSequence == null || charSequence.length() == 0) {
-                objects.clear();
-                if (charactersFull != null) { // Asegurar que charactersFull no sea nulo
-                    objects.addAll(charactersFull); // Restaurar la lista original
-                }
-            } else {
-                // Si hay un texto de búsqueda, mostrar los resultados filtrados
-                objects.clear();
-                objects.addAll(filteredList);
-            }
-
-            // Notificar al RecyclerView que los datos han cambiado
-            notifyDataSetChanged();
-        }
-
-
-    };
 }
 
 

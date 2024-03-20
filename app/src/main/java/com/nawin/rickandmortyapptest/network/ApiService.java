@@ -18,9 +18,5 @@ public interface ApiService {
     @GET("/api/character/{idCharacter}")
     Call<Character> getCharacter(@Path("idCharacter") int id);
 
-    //Descargar la informacion de otra pagina que no sea la primera
-
-    @GET("/api/character?")
-    Call<CharacterResponse> getPage(@Query("page") int pagina);
 }
 
